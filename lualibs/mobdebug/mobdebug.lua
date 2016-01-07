@@ -1001,7 +1001,7 @@ local function start(controller_host, controller_port)
   lasthost = controller_host or lasthost
   lastport = controller_port or lastport
 
-  controller_host = lasthost or "localhost"
+  controller_host = lasthost or "127.0.0.1"
   controller_port = lastport or mobdebug.port
 
   local err
@@ -1054,7 +1054,7 @@ local function controller(controller_host, controller_port, scratchpad)
   lasthost = controller_host or lasthost
   lastport = controller_port or lastport
 
-  controller_host = lasthost or "localhost"
+  controller_host = lasthost or "127.0.0.1"
   controller_port = lastport or mobdebug.port
 
   local exitonerror = not scratchpad
