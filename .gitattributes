@@ -1,0 +1,29 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+*.sh eol=lf
+/zbstudio/ZeroBraneStudio.app/Contents/MacOS/ZeroBraneStudio eol=lf
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+*.sln    merge=union
+*.csproj merge=union
+*.vbproj merge=union
+*.fsproj merge=union
+*.dbproj merge=union
+
+# Standard to msysgit
+*.doc	 diff=astextplain
+*.DOC	 diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF	 diff=astextplain
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain
+
+# Exclude .git* files from archive
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitmodules export-ignore
