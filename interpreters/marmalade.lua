@@ -19,14 +19,14 @@ local prev_debug_loader
 --]]
 function ProjectSettings(hub_project)
   local project_settings = {}
-  local in_section = false
+  local in_general_section = false
   for line in io.lines(hub_project) do
     -- Ignore comments and blank lines
     if not line:find('^%s*;') and not line:match('^%s*$') then
-      section = line:match('^%s*%[([^%]]+)%]%s*$')
+      local section = line:match('^%s*%[([^%]]+)%]%s*$')
       if section then
-        in_section = "GENERAL" == section:upper()
-      elseif in_section then
+        in_general_section = "GENERAL" == section:upper()
+      elseif in_general_section then
         local key, value = line:match('^%s*(%w+)%s*=%s*(.-)%s*$')
         if tonumber(value) then
           project_settings[key] = tonumber(value)
@@ -78,12 +78,16 @@ function LauncherFromHubProject(projdir, project_name)
       return
     end
 
-    local project_file = projdir..sep.."project_"..project_name..sep.."project.ini"
+    local project_file = projdir..sep.."project_"..project_name..sep.."project.ini" -- orig Hub
+    local project_file2 = projdir..sep.."project_"..project_name..sep.."project2.ini" -- Hub2
 
-    if not project_file or not wx.wxFileExists(project_file) then
-      DisplayOutputLn(("Warning: can't find '%s' Hub project file."):format(project_file))
+
+    if wx.wxFileExists(project_file2) then
+      project_settings = ProjectSettings(project_file2)
+    elseif wx.wxFileExists(project_file) then
+      project_settings = ProjectSettings(project_file) -- fallback to old Marmalade Hub
     else
-      project_settings = ProjectSettings(project_file)
+      DisplayOutputLn(("Warning: can't find '%s' Hub project file."):format(project_file2))
     end
     
     if next(project_settings) == nil then
