@@ -64,6 +64,11 @@ function LauncherFromHubProject(projdir, project_name)
 
     local sep = GetPathSeparator()
 
+    if projdir:sub(#projdir,#projdir) == sep then
+       -- if projdir ends with the separator character, then remove it - below assumes not there
+       projdir = projdir:sub(1, #projdir - 1)
+    end
+
     local mkb_quick = projdir..sep.."project_"..project_name..sep.."mkb-quick.txt"
 
     if not mkb_quick or not wx.wxFileExists(mkb_quick) then
