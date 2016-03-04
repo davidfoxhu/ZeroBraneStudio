@@ -305,29 +305,15 @@ return {
         args = "(channel: number)",
         returns = "(boolean)",
       },
-      get_streamVolume = {
-        type = "method",
-        description = "Get the volume level of stream (mp3, etc.) audio. This is the internal volume and not the level the user sets the volume to via hardware keys. e.g. The hardware/OS volume might be at 50% and this value at 0.8, which means the app is playing as loud as possible, which is 80% of 50% (i.e. 40%) of the hardware max volume.",
-        args = "(filename: string)",
-        returns = "(number)",
+      streamVolume = {
+        type = "value",
+        description = "The volume level of stream (mp3, etc.) audio. This is the internal volume and not the level the user sets the volume to via hardware keys. e.g. The hardware/OS volume might be at 50% and this value at 0.8, which means the app is playing as loud as possible, which is 80% of 50% (i.e. 40%) of the hardware max volume.",
+        value = "number",
       },
-      set_streamVolume = {
-        type = "method",
-        description = "Set the volume for stream audio.",
-        args = "(volume: number)",
-        returns = "()",
-      },
-      get_soundVolume = {
-        type = "method",
-        description = "Get the volume level of sound (not stream) audio. This volume is the master volume for all sound channels. This is the internal volume and not the level the user sets the volume to via hardware keys. e.g. The hardware/OS volume might be at 50% and this value at 0.8, which means the app is playing as loud as possible, which is 80% of 50% (i.e. 40%) of the hardware max volume.",
-        args = "(filename: string)",
-        returns = "(number)",
-      },
-      set_soundVolume = {
-        type = "method",
-        description = "Set the volume for sound audio.",
-        args = "(volume: number)",
-        returns = "()",
+      soundVolume = {
+        type = "value",
+        description = "The volume level of sound (not stream) audio. This volume is the master volume for all sound channels. This is the internal volume and not the level the user sets the volume to via hardware keys. e.g. The hardware/OS volume might be at 50% and this value at 0.8, which means the app is playing as loud as possible, which is 80% of 50% (i.e. 40%) of the hardware max volume.",
+        value = "number",
       },
     },
   },
