@@ -104,7 +104,7 @@ function LauncherFromHubProject(projdir, project_name)
     local via = projdir..sep..build_folder..sep..project_name.."_"..(project_settings.isDebug and 'debug' or 'release')..".via"
 
     if not via or not wx.wxFileExists(via) then
-      DisplayOutputLn(("Warning: can't find '%s' via file."):format(via))
+      DisplayOutputLn(("Warning: falling back (can't find '%s' via file)."):format(via))
       via = projdir..sep..build_folder..sep.."web_"..(project_settings.isDebug and 'debug' or 'release')..".via"
     end
 
